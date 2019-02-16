@@ -21,6 +21,14 @@ ws.on('open', function open() {
     }
 });
 
-ws.on('message', function incoming(data) {
-    console.log(data);  
+ws.on('message', function incoming(message) {
+    let data = {};
+    try {
+        data = JSON.parse(message);
+    } catch (e) {
+        console.error(e);
+        return;
+    }
+    
+    console.log(data); 
 });
